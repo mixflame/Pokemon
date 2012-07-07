@@ -11,6 +11,7 @@ HEREDOC
 INCLUDE_STRING = "    app.files << File.expand_path(File.join(File.dirname(__FILE__),'RELATIVE_LIBRARY_PATH'))"
 
 def require(file)
+puts file
 @required_libs << INCLUDE_STRING.gsub("RELATIVE_LIBRARY_PATH", file) if file.include?(ARGV[1]) && file != ARGV[0]
 super file
 end
