@@ -1,0 +1,17 @@
+Pokemon Load Order Tool
+
+Require a gem and then produce it's manifest
+
+
+Jonathans-MacBook-Pro% ./pokemon.rb ~/Hokkaido/gherkin/lib/gherkin.rb gherkin
+Motion::Project::App.setup do |app|
+    app.files << File.expand_path(File.join(File.dirname(__FILE__),'gherkin/lexer/i18n_lexer'))
+    app.files << File.expand_path(File.join(File.dirname(__FILE__),'gherkin/i18n'))
+    app.files << File.expand_path(File.join(File.dirname(__FILE__),'gherkin/rubify'))
+    app.files << File.expand_path(File.join(File.dirname(__FILE__),'gherkin/native'))
+    app.files << File.expand_path(File.join(File.dirname(__FILE__),'gherkin/native/null'))
+    app.files << File.expand_path(File.join(File.dirname(__FILE__),'gherkin/parser/parser'))
+    app.files << File.expand_path(File.join(File.dirname(__FILE__),'gherkin/listener/formatter_listener'))
+    app.files << File.expand_path(File.join(File.dirname(__FILE__),'gherkin/formatter/model'))
+    app.files << File.expand_path(File.join(File.dirname(__FILE__),'gherkin/formatter/hashable'))
+end
