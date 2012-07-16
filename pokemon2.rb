@@ -7,7 +7,6 @@ $uniq_libs = []
 
 $required_libs = []
 
-
 @master_file = ""
 
 
@@ -25,8 +24,9 @@ def require(file)
     lib_file = File.join(path, "#{file}.rb")
     if File.exists?(lib_file)
       unless $uniq_libs.include?(file)
+        file_index = $required_libs.count - 1
         $uniq_libs << file
-        $required_libs << lib_file
+        $required_libs.insert file_index, lib_file # i will changing to insert now and proper load order
       end
     end
   end
@@ -37,12 +37,9 @@ require(ARGV[0])
 
 $required_libs.each do |lib_file|
   s = File.open(lib_file, "r").read
-  # this is wrong
-  # instead we need a load order math tool
-  # that can act on a hash
-  # to calculate the best load order
-  # based on exactly what file requires what
   @master_file += s #"#{s}\n" + @master_file
 end
+
+# p $required_libs
 
 puts @master_file
